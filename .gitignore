@@ -39,3 +39,6 @@ sysinfo.txt
 *.log
 Logs/AssetImportWorker0.log
 *.log
+# Log files
+*.log
+*.log
