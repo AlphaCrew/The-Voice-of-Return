@@ -41,6 +41,54 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ModeS"",
+                    ""type"": ""Button"",
+                    ""id"": ""a7ad6d34-2a73-4883-8990-94ccaa250250"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ModeS2"",
+                    ""type"": ""Button"",
+                    ""id"": ""7bed8d7a-a9de-4f2d-893f-252833362b84"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ModeR"",
+                    ""type"": ""Button"",
+                    ""id"": ""b0063e69-1432-47cf-8259-c3bcc8f9587a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ModeO"",
+                    ""type"": ""Button"",
+                    ""id"": ""02172369-c066-4a3c-bf56-0e7673b62840"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Respawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""c590a87f-8e88-45af-8a22-b9cb4d2b20af"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""dc139724-363e-4c77-b6dc-1d2b6ff4722b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -120,6 +168,72 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""action"": ""Brake"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af8c869c-4e83-458e-add0-4b1862afcb98"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ModeS"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69a135a3-ad9f-466e-ad2c-a15275d30c5a"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ModeS2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46766d13-1a26-4dff-b2e1-e7d36b5759b2"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ModeR"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6987c50-4407-4ea7-a834-9e1247622a0b"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ModeO"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b87e6ac-bc8e-464d-973f-c86434ec19a9"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7addd3a-eb53-44d5-a12b-b589e621133b"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -177,6 +291,12 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_Keyboard_WS = m_Keyboard.FindAction("WS", throwIfNotFound: true);
         m_Keyboard_AD = m_Keyboard.FindAction("AD", throwIfNotFound: true);
         m_Keyboard_Brake = m_Keyboard.FindAction("Brake", throwIfNotFound: true);
+        m_Keyboard_ModeS = m_Keyboard.FindAction("ModeS", throwIfNotFound: true);
+        m_Keyboard_ModeS2 = m_Keyboard.FindAction("ModeS2", throwIfNotFound: true);
+        m_Keyboard_ModeR = m_Keyboard.FindAction("ModeR", throwIfNotFound: true);
+        m_Keyboard_ModeO = m_Keyboard.FindAction("ModeO", throwIfNotFound: true);
+        m_Keyboard_Respawn = m_Keyboard.FindAction("Respawn", throwIfNotFound: true);
+        m_Keyboard_PauseGame = m_Keyboard.FindAction("PauseGame", throwIfNotFound: true);
         // Mouse
         m_Mouse = asset.FindActionMap("Mouse", throwIfNotFound: true);
         m_Mouse_MouseLook = m_Mouse.FindAction("MouseLook", throwIfNotFound: true);
@@ -233,6 +353,12 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Keyboard_WS;
     private readonly InputAction m_Keyboard_AD;
     private readonly InputAction m_Keyboard_Brake;
+    private readonly InputAction m_Keyboard_ModeS;
+    private readonly InputAction m_Keyboard_ModeS2;
+    private readonly InputAction m_Keyboard_ModeR;
+    private readonly InputAction m_Keyboard_ModeO;
+    private readonly InputAction m_Keyboard_Respawn;
+    private readonly InputAction m_Keyboard_PauseGame;
     public struct KeyboardActions
     {
         private @InputActions m_Wrapper;
@@ -240,6 +366,12 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @WS => m_Wrapper.m_Keyboard_WS;
         public InputAction @AD => m_Wrapper.m_Keyboard_AD;
         public InputAction @Brake => m_Wrapper.m_Keyboard_Brake;
+        public InputAction @ModeS => m_Wrapper.m_Keyboard_ModeS;
+        public InputAction @ModeS2 => m_Wrapper.m_Keyboard_ModeS2;
+        public InputAction @ModeR => m_Wrapper.m_Keyboard_ModeR;
+        public InputAction @ModeO => m_Wrapper.m_Keyboard_ModeO;
+        public InputAction @Respawn => m_Wrapper.m_Keyboard_Respawn;
+        public InputAction @PauseGame => m_Wrapper.m_Keyboard_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +390,24 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Brake.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnBrake;
                 @Brake.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnBrake;
                 @Brake.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnBrake;
+                @ModeS.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnModeS;
+                @ModeS.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnModeS;
+                @ModeS.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnModeS;
+                @ModeS2.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnModeS2;
+                @ModeS2.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnModeS2;
+                @ModeS2.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnModeS2;
+                @ModeR.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnModeR;
+                @ModeR.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnModeR;
+                @ModeR.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnModeR;
+                @ModeO.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnModeO;
+                @ModeO.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnModeO;
+                @ModeO.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnModeO;
+                @Respawn.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnRespawn;
+                @Respawn.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnRespawn;
+                @Respawn.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnRespawn;
+                @PauseGame.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnPauseGame;
+                @PauseGame.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnPauseGame;
+                @PauseGame.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnPauseGame;
             }
             m_Wrapper.m_KeyboardActionsCallbackInterface = instance;
             if (instance != null)
@@ -271,6 +421,24 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Brake.started += instance.OnBrake;
                 @Brake.performed += instance.OnBrake;
                 @Brake.canceled += instance.OnBrake;
+                @ModeS.started += instance.OnModeS;
+                @ModeS.performed += instance.OnModeS;
+                @ModeS.canceled += instance.OnModeS;
+                @ModeS2.started += instance.OnModeS2;
+                @ModeS2.performed += instance.OnModeS2;
+                @ModeS2.canceled += instance.OnModeS2;
+                @ModeR.started += instance.OnModeR;
+                @ModeR.performed += instance.OnModeR;
+                @ModeR.canceled += instance.OnModeR;
+                @ModeO.started += instance.OnModeO;
+                @ModeO.performed += instance.OnModeO;
+                @ModeO.canceled += instance.OnModeO;
+                @Respawn.started += instance.OnRespawn;
+                @Respawn.performed += instance.OnRespawn;
+                @Respawn.canceled += instance.OnRespawn;
+                @PauseGame.started += instance.OnPauseGame;
+                @PauseGame.performed += instance.OnPauseGame;
+                @PauseGame.canceled += instance.OnPauseGame;
             }
         }
     }
@@ -321,6 +489,12 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnWS(InputAction.CallbackContext context);
         void OnAD(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
+        void OnModeS(InputAction.CallbackContext context);
+        void OnModeS2(InputAction.CallbackContext context);
+        void OnModeR(InputAction.CallbackContext context);
+        void OnModeO(InputAction.CallbackContext context);
+        void OnRespawn(InputAction.CallbackContext context);
+        void OnPauseGame(InputAction.CallbackContext context);
     }
     public interface IMouseActions
     {

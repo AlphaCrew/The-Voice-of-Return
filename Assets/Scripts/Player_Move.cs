@@ -22,6 +22,9 @@ public class Player_Move : MonoBehaviour
     public WheelInfo WFL;
     private InputActions playerinput;
     public Rigidbody rb;
+    public float mode = 1, modeR;
+    [SerializeField] private Transform Player;
+    [SerializeField] private Transform Respawn;
 
     private void Awake()
     {
@@ -45,14 +48,85 @@ public class Player_Move : MonoBehaviour
         float movementZ = playerinput.Keyboard.WS.ReadValue<float>();
         float movementX = playerinput.Keyboard.AD.ReadValue<float>();
         float brakebutton = playerinput.Keyboard.Brake.ReadValue<float>();
-        WFL.wheelcollider.motorTorque = movementZ * motor;
-        WFL.wheelcollider.steerAngle = movementX * steer;
-        WFR.wheelcollider.motorTorque = movementZ * motor;
-        WFR.wheelcollider.steerAngle = movementX * steer;
-        WBL.wheelcollider.motorTorque = movementZ * motor;
-        WBL.wheelcollider.steerAngle = movementX * steer;
-        WBR.wheelcollider.motorTorque = movementZ * motor;
-        WBR.wheelcollider.steerAngle = movementX * steer;
+        if (mode == 1 || playerinput.Keyboard.ModeS.ReadValue<float>() == 1)
+        {
+            WFL.wheelcollider.motorTorque = movementZ * motor;
+            WFL.wheelcollider.steerAngle = movementX * steer;
+            WFR.wheelcollider.motorTorque = movementZ * motor;
+            WFR.wheelcollider.steerAngle = movementX * steer;
+            WBL.wheelcollider.motorTorque = movementZ * motor;
+            WBL.wheelcollider.steerAngle = 0;
+            WBR.wheelcollider.motorTorque = movementZ * motor;
+            WBR.wheelcollider.steerAngle = 0;
+            mode = 1;
+        }
+
+        if (mode == 2 || playerinput.Keyboard.ModeS2.ReadValue<float>() == 1)
+        {
+            WFL.wheelcollider.motorTorque = movementZ * motor;
+            WFL.wheelcollider.steerAngle = 0;
+            WFR.wheelcollider.motorTorque = movementZ * motor;
+            WFR.wheelcollider.steerAngle = 0;
+            WBL.wheelcollider.motorTorque = movementZ * motor;
+            WBL.wheelcollider.steerAngle = movementX * -1 * steer;
+            WBR.wheelcollider.motorTorque = movementZ * motor;
+            WBR.wheelcollider.steerAngle = movementX * -1 *steer;
+            mode = 2;
+        }
+
+        if (mode == 3 || playerinput.Keyboard.ModeR.ReadValue<float>() == 1)
+        {
+            if (movementX == 1)
+            {
+                WFL.wheelcollider.motorTorque = movementX * motor;
+                WFL.wheelcollider.steerAngle = movementX * steer;
+                WFR.wheelcollider.motorTorque = movementX * motor * -1;
+                WFR.wheelcollider.steerAngle = movementX * steer * -1;
+                WBL.wheelcollider.motorTorque = movementX * motor;
+                WBL.wheelcollider.steerAngle = movementX * steer * -1;
+                WBR.wheelcollider.motorTorque = movementX * motor * -1;
+                WBR.wheelcollider.steerAngle = movementX * steer;
+            }
+
+            if (movementX == -1)
+            {
+                WFL.wheelcollider.motorTorque = movementX * motor;
+                WFL.wheelcollider.steerAngle = movementX * steer * -1;
+                WFR.wheelcollider.motorTorque = movementX * motor * -1;
+                WFR.wheelcollider.steerAngle = movementX * steer;
+                WBL.wheelcollider.motorTorque = movementX * motor;
+                WBL.wheelcollider.steerAngle = movementX * steer;
+                WBR.wheelcollider.motorTorque = movementX * motor * -1;
+                WBR.wheelcollider.steerAngle = movementX * steer * -1;
+            }
+
+            if (movementX == 0)
+            {
+                WFL.wheelcollider.motorTorque = movementZ * motor;
+                WFL.wheelcollider.steerAngle = 0;
+                WFR.wheelcollider.motorTorque = movementZ * motor;
+                WFR.wheelcollider.steerAngle = 0;
+                WBL.wheelcollider.motorTorque = movementZ * motor;
+                WBL.wheelcollider.steerAngle = 0;
+                WBR.wheelcollider.motorTorque = movementZ * motor;
+                WBR.wheelcollider.steerAngle = 0;
+            }
+
+            mode = 3;
+        }
+        if (mode == 4 || playerinput.Keyboard.ModeO.ReadValue<float>() == 1)
+        {
+            WFL.wheelcollider.motorTorque = movementZ * motor;
+            WFL.wheelcollider.steerAngle = movementX * steer;
+            WFR.wheelcollider.motorTorque = movementZ * motor;
+            WFR.wheelcollider.steerAngle = movementX * steer;
+            WBL.wheelcollider.motorTorque = movementZ * motor;
+            WBL.wheelcollider.steerAngle = movementX * steer;
+            WBR.wheelcollider.motorTorque = movementZ * motor;
+            WBR.wheelcollider.steerAngle = movementX * steer;
+            mode = 4;
+        }
+
 
         if (brakebutton == 1)
         {
@@ -77,6 +151,13 @@ public class Player_Move : MonoBehaviour
         }
 
         UpdateVisualWheels();
+        if (playerinput.Keyboard.Respawn.ReadValue<float>() == 1)
+        {
+            rb.isKinematic = true;
+            Player.transform.position = Respawn.transform.position;
+            Player.transform.rotation = Respawn.transform.rotation;
+            rb.isKinematic = false;
+        }
 
     }
     private void UpdateVisualWheels()
