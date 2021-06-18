@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using Cinemachine;
 using UnityEngine;
 
 public class Zoom : MonoBehaviour
 {
-    [SerializeField] private float zoomSpeed = 3f;
+    public float zoomSpeed;
     [SerializeField] private float zoomInMax = 40f;
     [SerializeField] private float zoomOutMax = 90f;
     private CinemachineInputProvider inputProvider;
     private CinemachineFreeLook freecamera;
+    public Slider mainSlider;
 
     private void Awake()
     {
@@ -18,7 +20,8 @@ public class Zoom : MonoBehaviour
     }
     void Start()
     {
-
+        LoadPlayer();
+        mainSlider.value = zoomSpeed;
     }
     void Update()
     {
@@ -27,6 +30,8 @@ public class Zoom : MonoBehaviour
         {
             ZoomScreen(z);
         }
+        LoadPlayer();
+        ChangezoomSpeed();
     }
     public void ZoomScreen(float increment)
     {
@@ -34,4 +39,23 @@ public class Zoom : MonoBehaviour
         float target = Mathf.Clamp(fov + increment, zoomInMax, zoomOutMax);
         freecamera.m_Lens.FieldOfView = Mathf.Lerp(fov, target, zoomSpeed * Time.deltaTime);
     }
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+        zoomSpeed = data.zoomSpeed;
+        Debug.Log(zoomSpeed);
+    }
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+    #region UI Methods
+    public void ChangezoomSpeed()
+    {
+        zoomSpeed = mainSlider.value;
+        SavePlayer();
+    }
+
+    #endregion
 }

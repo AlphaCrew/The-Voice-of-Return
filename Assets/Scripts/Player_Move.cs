@@ -22,7 +22,7 @@ public class Player_Move : MonoBehaviour
     public WheelInfo WFL;
     private InputActions playerinput;
     public Rigidbody rb;
-    public float mode = 1, modeR;
+    public float mode = 1;
     [SerializeField] private Transform Player;
     [SerializeField] private Transform Respawn;
 
@@ -153,12 +153,17 @@ public class Player_Move : MonoBehaviour
         UpdateVisualWheels();
         if (playerinput.Keyboard.Respawn.ReadValue<float>() == 1)
         {
-            rb.isKinematic = true;
-            Player.transform.position = Respawn.transform.position;
-            Player.transform.rotation = Respawn.transform.rotation;
-            rb.isKinematic = false;
+            RespawnAction();
         }
 
+    }
+
+    public void RespawnAction()
+    {
+        rb.isKinematic = true;
+        Player.transform.position = Respawn.transform.position;
+        Player.transform.rotation = Respawn.transform.rotation;
+        rb.isKinematic = false;
     }
     private void UpdateVisualWheels()
     {
