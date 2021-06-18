@@ -7,6 +7,11 @@ public class PauseManager : MonoBehaviour
     private InputActions playerinput;
     private static bool paused = false;
     public GameObject menu;
+    public GameObject settings;
+    public GameObject menu1;
+    public Rigidbody rb;
+    public GameObject Player;
+    public GameObject Respawn;
     private void Awake()
     {
         playerinput = new InputActions();
@@ -48,6 +53,23 @@ public class PauseManager : MonoBehaviour
             ResumeGame();
         else
             PauseGame();
+    }
+    public void RespawnAction()
+    {
+        rb.isKinematic = true;
+        Player.transform.position = Respawn.transform.position;
+        Player.transform.rotation = Respawn.transform.rotation;
+        rb.isKinematic = false;
+    }
+    public void settingso()
+    {
+        menu1.SetActive(false);
+        settings.SetActive(true);
+    }
+    public void settingsq()
+    {
+        menu1.SetActive(true);
+        settings.SetActive(false);
     }
     public void quit()
     {
